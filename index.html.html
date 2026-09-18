@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bon débarra Lionel</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #2b2b2b;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff9800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        #timer {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            #timer { font-size: 2.2rem; padding: 15px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>bon débarra Lionel</h1>
+    <div id="timer">Calcul en cours...</div>
+
+    <script>
+        // Date cible : 30 octobre 2026 à 16h15
+        const countDownDate = new Date("Oct 30, 2026 16:15:00").getTime();
+
+        // Mise à jour du minuteur toutes les secondes
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            // Calcul des jours, heures, minutes et secondes
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Affichage du résultat
+            document.getElementById("timer").innerHTML = days + "j " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // Si le compte à rebours est terminé
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "C'est l'heure !";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
